@@ -6,13 +6,14 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
+
+import './NavBar.css';
 
 export default class Navbar extends Component 
 {
@@ -25,7 +26,7 @@ export default class Navbar extends Component
             anchorElNav: null,
             anchorElUser: null,
             pages: ['Accueil', 'Boites', 'Amélioration', 'Wiki', 'A propos de nous'],
-            links: ['home', 'boxes', 'Upgrade', 'Wiki', 'AboutUs'],
+            links: ['/home', '/boxes', '/Upgrade', '/Wiki', '/AboutUs'],
             connectAccounts: ["Se connecter", "S'inscrire"],
             settings: ['Profile', 'Sac à dos', 'Paramètres', 'Se déconnecter'],
             isConnected: false,
@@ -53,7 +54,7 @@ export default class Navbar extends Component
     render = () => 
     (
         <div className="Navbar">
-            <AppBar position="static">
+            <AppBar position="static" sx={{backgroundColor: "#1c323f"}}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         
@@ -95,11 +96,9 @@ export default class Navbar extends Component
                             >
                                 <List>
                                     {this.state.pages.map((page, index) => (
-                                        <Link key={index} to={this.state.links[index]}>
-                                            <ListItem button key={page}>
-                                                <ListItemText primary={page} />
-                                            </ListItem>
-                                        </Link>
+                                        <ListItem component={Link} to={this.state.links[index]} button key={page}>
+                                            <ListItemText primary={page} />
+                                        </ListItem>
                                     ))}
                                 </List>
                             </Box>
@@ -122,13 +121,14 @@ export default class Navbar extends Component
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {this.state.pages.map((page, index) => (
-                                <Button to={this.state.links[index]} key={page} onClick={this.handleCloseNavMenu} 
-                                sx={{ my: 2, color: 'white', display: 'block' }}        
+                                <Button component={Link} to={this.state.links[index]} key={page} onClick={this.handleCloseNavMenu} 
+                                sx={{ m: 2, color: '#c6983a', display: 'block' }} id="buttonNav"
                                 >
                                     {page}
                                 </Button>
                             ))}
                         </Box>
+
                     </Toolbar>
                 </Container>
             </AppBar>
