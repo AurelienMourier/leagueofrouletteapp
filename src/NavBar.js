@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
 import logoLoL from "./imgs/logo_LoL.png";
+import axios from 'axios';
 
 export default class Navbar extends Component 
 {
@@ -34,7 +35,22 @@ export default class Navbar extends Component
             userIcon: "/favicon.ico",
             toggleDrawer: false,
             openedMenu: false,
+            errorMessage: "",
+            userLevel: 10,
         }
+    }
+
+    componentDidMount() 
+    {
+        axios.get(`https://leagueofroulette.azurewebsites.net/api/user/level`, )
+        .then(response => {
+            this.setState({
+                userLevel: response.data.level
+            })
+            
+        }).catch(error => {
+            this.setState({errorMessage: error.response.data})
+        })
     }
 
     isLoggedIn() {
@@ -129,14 +145,21 @@ export default class Navbar extends Component
                         </Box>
 
                         <Box>
-                            <IconButton
-                                size="large"
-                                aria-label="User account"
-                                aria-haspopup="true"
-                                onClick={this.openMenu(true)}
-                            >
-                                <AccountCircle fontSize="large" sx={{ color: "#c6983a"}}/>
-                            </IconButton>
+                            <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                                { this.isLoggedIn() ? 
+                                    <p>Niveau: {this.state.userLevel}</p>
+                                    :
+                                    <span></span>
+                                }
+                                <IconButton
+                                    size="large"
+                                    aria-label="User account"
+                                    aria-haspopup="true"
+                                    onClick={this.openMenu(true)}
+                                >
+                                    <AccountCircle fontSize="large" sx={{ color: "#c6983a"}}/>
+                                </IconButton>
+                            </Box>
 
                             <Menu
                                 id="menu-appbar"

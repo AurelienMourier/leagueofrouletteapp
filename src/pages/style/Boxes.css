@@ -46,7 +46,7 @@
   color: #02353f !important;
 }
 
-.Buybox {
+.Buybox, .boxStateBox, .boxLevelBox {
   text-align: center;
   margin-bottom: 2%;
   font-size: 25px !important;
@@ -112,4 +112,45 @@
 
 .modalPurchaseBtn:hover {
   background-color: #c6983a !important;
+}
+
+.boxStateBox {
+  text-align: center;
+  margin-bottom: 2%;
+  font-size: 25px !important;
+  font-weight: 900 !important;
+
+}
+
+.BoxesModalError {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 250px;
+  background-color: #02353fad;
+  border: 2px solid #000;
+  box-shadow: 24px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalErrorTitle {
+  color: #c6983a;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 1000;
+}
+
+.modalErrorDescription {
+  color: #c6983a;
+  font-size: 17px;
+  text-align: center;
+  font-weight: 1000;
+  margin-left: 10px;
+  margin-right: 10px;
 }
