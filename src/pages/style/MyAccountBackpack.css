@@ -1,0 +1,128 @@
+.BackpackContent {
+    background-color: rgba(28, 50, 63, 0.705);
+    justify-content: center;
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 20px;
+    border: solid #0c91a084 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.BackpackBoxInfos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: FrizQuadrataStdMedium !important;
+    font-size: 20px;
+    font-weight: 1000;
+    color: #c6983a !important;
+}
+
+.BackpackBoxCenter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.BackpackCardBoxs {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    flex: 0 0 30%;
+    -webkit-box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86); 
+    box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86);
+    margin: 15px;
+    border: solid black 3px;
+    border-radius: 45px;
+    max-width: 280px;
+}
+
+.BackpackCardBox {
+    width: 280px;
+    border: solid black 5px;
+    border-radius: 50px !important;
+    color: #c6983a !important;
+    background-color: #3d78849a !important;
+}
+
+.BackpackCardBox:hover{
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 10px 10px #58a9b9d6; 
+    box-shadow: 0px 0px 10px 10px #58a9b9d6;
+}
+
+.BackpackContentInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.BackpackTopInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 33%;
+}
+
+.BackpackTextInfo {
+    margin-right: 5px;
+    font-size: 23px;
+    font-family: FrizQuadrataStdMedium;
+    font-weight: 1000;
+    color: #c6983a;
+}
+
+.BackpackNumberInfo {
+    margin-left: 5px;
+    font-size: 21px;
+    font-family: FrizQuadrataStdMedium;
+    color: #c6983a;
+}
+
+.BackpackImgInfo {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.BackpackBlueEssance {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.backpackCircularProgress {
+    color: #c6983a !important;
+    width: 150px !important;
+    height: 150px !important;
+    margin: 20px;
+}
+
+.cardBoxList {
+    display: flex;
+    flex-direction: row;
+    padding: 0 !important;
+    margin: 0;
+    width: 85px;
+}
+
+.cardBoxImage {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+
+.cardBoxTextRarity {
+    font-family: FrizQuadrataStdMedium;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 1000;
+    margin: 0;
+}

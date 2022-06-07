@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
@@ -12,8 +11,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 
-import './NavBar.css';
+import logoLoL from "./imgs/logo_LoL.png";
 
 export default class Navbar extends Component 
 {
@@ -25,21 +27,29 @@ export default class Navbar extends Component
         this.state = {
             anchorElNav: null,
             anchorElUser: null,
-            pages: ['Accueil', 'Boites', 'Amélioration', 'Wiki', 'A propos de nous'],
-            links: ['/home', '/boxes', '/Upgrade', '/Wiki', '/AboutUs'],
+            pages: ['Accueil', 'Boites', 'Wiki', 'A propos de moi'],
+            links: ['/home', '/boxes', '/wiki', '/about-us'],
             connectAccounts: ["Se connecter", "S'inscrire"],
             settings: ['Profile', 'Sac à dos', 'Paramètres', 'Se déconnecter'],
-            isConnected: false,
             userIcon: "/favicon.ico",
             toggleDrawer: false,
+            openedMenu: false,
         }
     }
-    
 
-    componentDidMount()
-    {
-
+    isLoggedIn() {
+        return localStorage.getItem("access_token");
     }
+
+    openMenu = (open) => (event) => {      
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        
+        this.setState ({
+            openedMenu: open
+        })
+    };
 
     handleOpenNavDrawer = (open) => (event) => {      
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -51,27 +61,29 @@ export default class Navbar extends Component
         })
     };
 
+    disconect = () => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        this.setState({openMenu: false});
+        localStorage.clear();
+    }
+
     render = () => 
     (
         <div className="Navbar">
-            <AppBar position="static" sx={{backgroundColor: "#1c323f"}}>
+            <AppBar className="appbar" position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         
                         {/* Affichage du logo en grand écran */}
-                        <Typography
-                            variant="h6"
-                            wrap='true'
-                            component="div"
-                            sx={{ flexGrow: 1, mr: 2, justifyContent: 'space-between', display: { xs: 'none', md: 'flex' } }}
-                        >
-                            LOGO
-                        </Typography>
+                        <img sx={{ display: { xs: 'none', md: 'flex' }, m:1 }} wrap='true' className="logoNavBar" src={logoLoL} alt="logoLoL" />
 
 
                         {/* Affichage de l'icon du drawer pour le menu en xs */}
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <Box className="menuIcon" sx={{ display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -104,29 +116,54 @@ export default class Navbar extends Component
                             </Box>
                         </Drawer>
 
-
-                        {/* Affichage du logo en petit écran xs */}
-
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                        >
-                            LOGO
-                        </Typography>
-
-
                         {/* Affichage du menu en long en haut */}
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ flexGrow: 1, justifyContent: 'space-evenly', display: { xs: 'none', md: 'flex' } }}>
                             {this.state.pages.map((page, index) => (
                                 <Button component={Link} to={this.state.links[index]} key={page} onClick={this.handleCloseNavMenu} 
-                                sx={{ m: 2, color: '#c6983a', display: 'block' }} id="buttonNav"
+                                className="buttonNav"
                                 >
                                     {page}
                                 </Button>
                             ))}
+                        </Box>
+
+                        <Box>
+                            <IconButton
+                                size="large"
+                                aria-label="User account"
+                                aria-haspopup="true"
+                                onClick={this.openMenu(true)}
+                            >
+                                <AccountCircle fontSize="large" sx={{ color: "#c6983a"}}/>
+                            </IconButton>
+
+                            <Menu
+                                id="menu-appbar"
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={this.state.openedMenu}
+                                onClose={this.openMenu(false)}
+                            >
+                                { this.isLoggedIn() ?
+                                    <Box>
+                                        <MenuItem component={Link} onClick={this.openMenu(false)} to="/myaccount">Mon compte</MenuItem>
+                                        <MenuItem component={Link} onClick={this.disconect()} to="/login">Se déconnecter</MenuItem>
+                                    </Box>
+                                :
+                                    <Box>
+                                        <MenuItem component={Link} onClick={this.openMenu(false)} to="/login">Se connecter</MenuItem>
+                                        <MenuItem component={Link} onClick={this.openMenu(false)} to="/register">S'inscrire</MenuItem>
+                                    </Box>
+                                }
+                            </Menu>
                         </Box>
 
                     </Toolbar>

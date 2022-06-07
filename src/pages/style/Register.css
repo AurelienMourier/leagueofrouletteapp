@@ -1,0 +1,87 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registerFormBox {
+    border: solid black 5px;
+    border-radius: 15px !important;
+    -webkit-box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86); 
+    box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86);
+    background-color: #02353f67;
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+.registerFormControl {
+    margin: 10px !important;
+    text-align: center !important;
+    color: #c6983a !important;
+    border-color: #c6983a !important;
+}
+
+.registerFormInput {
+    color: #c6983a !important;
+}
+
+.registerFormButton {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+}
+
+
+.registerTitle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 1000;
+    color: #c6983a;
+    text-shadow: 3px 5px 3px #000000;
+}
+
+.registerFormInputLabel {
+    color: #c6983a !important;
+    font-family: FrizQuadrataStdMedium !important;
+    font-size: 19px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: #c6983a !important;
+    border-width: 3px !important;
+}
+
+.registerBtnSubmit {
+    background-color: #02353f !important;
+    padding: 10px;
+    font-size: 25px !important;
+    font-weight: 1000 !important;
+    font-family: FrizQuadrataStdMedium !important;
+}
+
+.registerErrorMessage {
+    padding-top: 10px;
+    font-family: FrizQuadrataStdMedium !important;
+    color: red !important;
+    font-size: 25px !important;
+    font-weight: 1000 !important;
+}
+
+.registerbtnsLogin {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.registerBtnLogin {
+    margin: 10px !important;
+    background-color: #02353f !important;
+    padding: 10px;
+    font-size: 25px !important;
+    font-weight: 1000 !important;
+    font-family: FrizQuadrataStdMedium !important;
+}

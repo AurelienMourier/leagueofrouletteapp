@@ -1,0 +1,20 @@
+.imgCarteLol {
+    width: 60%;
+    height: 60%;
+}
+
+.aboutUsTextBox {
+    width: 100%;
+    border: solid black 5px;
+    border-radius: 15px !important;
+    -webkit-box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86); 
+    box-shadow: 7px 8px 8px -3px rgba(0,0,0,0.86);
+    background-color: #02353f67;
+    margin-bottom: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+.aboutUsText {
+    font-size: 20px;
+}

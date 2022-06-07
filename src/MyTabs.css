@@ -1,0 +1,31 @@
+.MyTabsTopTabBox {
+    width: 100%;
+}
+
+.MyTabsTopTabs {
+    background-color: #1c323f;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.MyTabsTopTab {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: FrizQuadrataStdMedium !important;
+    font-size: 23px !important;
+    color: #c6983a !important;
+    font-weight: 1000 !important;
+    text-align: center;
+}
+
+.MuiTabs-flexContainer {
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.MyTabsTopPanel {
+    background-color: #1c323f81 !important;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

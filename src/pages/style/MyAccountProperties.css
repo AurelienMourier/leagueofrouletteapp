@@ -1,0 +1,51 @@
+.PropertiesContent {
+    background-color: rgba(28, 50, 63, 0.705);
+    justify-content: center;
+    width: 500px;
+    padding: 5px;
+    border-radius: 20px;
+    border: solid #0c91a084 4px;
+}
+
+.PropertiesBoxInfos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: FrizQuadrataStdMedium !important;
+    font-size: 20px;
+    font-weight: 1000;
+    color: #c6983a !important;
+}
+
+.PropertiesFormControl {
+    margin: 10px !important;
+    text-align: center !important;
+    color: #07bfd484;
+}
+
+.PropertiesFormInput {
+    color: #07bfd484 !important;
+    font-size: 16px !important;
+    font-weight: 1000 !important;
+    width: 210px;
+    margin-top: 10px;
+}
+
+.PropertiesBoxCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.PropertiesPassword {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: right;
+    height: 50px;
+    width: 210px;
+}
+
+.PropertiesIcon {
+    color: #c6983a !important;
+}

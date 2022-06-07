@@ -1,6 +1,11 @@
-import { Button, OutlinedInput, FormControl, InputLabel, FormHelperText, Grid, Typography } from "@mui/material";
+import { Button, OutlinedInput, FormControl, InputLabel, FormHelperText, Typography } from "@mui/material";
 import React, { Component } from "react";
 import axios from "axios";
+import { Navigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import { Link } from "react-router-dom";
+
+import "./style/Login.css";
 
 export default class Login extends Component 
 {
@@ -11,8 +16,7 @@ export default class Login extends Component
         this.state = {
             email: '',
             password: '',
-            loggedIn: false,
-            errorMessage: '',
+            errorMessage: ''
         }
     }
 
@@ -29,34 +33,53 @@ export default class Login extends Component
             password: this.state.password,
         }
 
-        axios.post(`https://localhost:5001/api/auth/signIn`, UserLogin)
+        axios.post(`https://leagueofroulette.azurewebsites.net/api/auth/signIn`, UserLogin)
         .then(response => {
             localStorage.setItem("access_token", response.data.token);
+            this.setState({
+                loggedIn: true
+            })
+            
         }).catch(error => {
             this.setState({errorMessage: error.response.data})
-            console.log(error.response);
         })
+    }
+    
+    isLoggedIn() {
+        return localStorage.getItem("access_token");
     }
 
     render = () => 
     (
-        <div className="app">
-            <Grid container direction="column" justifyContent="center" alignItems="center" height={400}>
-                <Grid>
-                    <FormControl>
-                        <InputLabel label="Outlined secondary">Email</InputLabel>
-                        <OutlinedInput id="component-outlined" name="email" label="email" onChange={ (e) => this.handleChange(e)}/>
-                        <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                    </FormControl>
-                    <FormControl>
-                        <InputLabel label="Outlined secondary">password</InputLabel>
-                        <OutlinedInput id="component-outlined" name="password" label="password" onChange={ (e) => this.handleChange(e)}/>
-                        <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                    </FormControl>
-                </Grid>
-                <Button variant="contained" onClick={ () => this.Login()}>Submit</Button>
-                <Typography variant="h6" color="red">{this.state.errorMessage}</Typography>
-            </Grid>
+        !this.isLoggedIn() ? 
+        (
+        <div className="login">
+            <p className="loginTitle">SE CONNECTER</p>
+            <Box className="LoginbtnsLogin" sx={{ display: 'flex', flexDirection: 'row'}}>
+                <Link to="/register"><Button className="LoginBtnLogin" variant="contained">S'inscrire</Button></Link>
+                <Button className="LoginBtnLogin" disabled="true" variant="contained">Se connecter</Button>
+            </Box>
+            <Box className="loginFormBox">
+                <FormControl className="loginFormControl">
+                    <InputLabel className="loginFormInputLabel" label="Outlined secondary">Email</InputLabel>
+                    <OutlinedInput className="loginFormInput" id="component-outlined" name="email" label="email" onChange={ (e) => this.handleChange(e)}/>
+                    <FormHelperText className="loginFormHelperText" id="my-helper-text">We'll never share your email.</FormHelperText>
+                </FormControl>
+                <FormControl className="loginFormControl">
+                    <InputLabel className="loginFormInputLabel" label="Outlined secondary">Password</InputLabel>
+                    <OutlinedInput className="loginFormInput" type="password" id="component-outlined" name="password" label="password" onChange={ (e) => this.handleChange(e)}/>
+                    <FormHelperText className="loginFormHelperText" id="my-helper-text">We'll never share your password.</FormHelperText>
+                </FormControl>
+                <Box className="loginFormButton">
+                    <Button className="btnSubmit" variant="contained" onClick={ () => this.Login()}>Connexion</Button>
+                    <Typography className="loginErrorMessage">{this.state.errorMessage}</Typography>
+                </Box>
+            </Box>
         </div>
+        )
+        :
+        (
+            <Navigate to="/home" />
+        )
     );
 }

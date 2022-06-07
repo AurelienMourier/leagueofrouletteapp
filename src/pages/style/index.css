@@ -1,0 +1,59 @@
+/* Style for the app */
+
+body {
+  margin: 0;
+  font-family: FrizQuadrataStdMedium;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: scroll center no-repeat url("../../imgs/background.jpg") #046072;
+  background-position-y: top 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+code {
+  font-family: FrizQuadrataStdMedium;
+}
+
+@font-face {
+  font-family: FrizQuadrataStdMedium;
+  src: url("../../fonts/FrizQuadrataStdMedium.otf") format("opentype");
+}
+
+.main {
+  border: solid #07bfd450 5px;
+  border-radius: 20px;
+  background-color: #07bfd484; 
+  height: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/* Style NavBar */
+
+.appbar {
+  background-color: #1c323f !important;
+}
+
+.buttonNav {
+  font-family: FrizQuadrataStdMedium !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+  margin: 2 !important;
+  color: #c6983a !important;
+  display: block !important;
+}
+
+.logoNavBar {
+  width: 6%;
+  height: 6%;
+  margin-right: 2;
+  justify-content: space-between;
+}
+
+.menuIcon {
+  flex-grow: 1;
+}
